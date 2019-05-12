@@ -175,3 +175,7 @@
     border: 1px dashed #BBB;
     opacity: .7;
 }
+
+.tree-control {
+    padding: 3px 3px;
+}

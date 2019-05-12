@@ -3050,7 +3050,7 @@
     QueryBuilder.templates.filterSelect = '\
 {{ var optgroup = null; }} \
 <input type="checkbox" checked="checked" class="rule-is_active" name="{{= it.rule.id }}_is_active"> \
-<select class="form-control" name="{{= it.rule.id }}_filter"> \
+<select class="tree-control" name="{{= it.rule.id }}_filter"> \
   {{? it.settings.display_empty_filter }} \
     <option value="-1">{{= it.settings.select_placeholder }}</option> \
   {{?}} \
@@ -3073,7 +3073,7 @@
 </span> \
 {{?}} \
 {{ var optgroup = null; }} \
-<select class="form-control {{? it.operators.length === 1 }}hide{{?}}" name="{{= it.rule.id }}_operator"> \
+<select class="tree-control {{? it.operators.length === 1 }}hide{{?}}" name="{{= it.rule.id }}_operator"> \
   {{~ it.operators: operator }} \
     {{? optgroup !== operator.optgroup }} \
       {{? optgroup !== null }}</optgroup>{{?}} \
@@ -3088,7 +3088,7 @@
 
     QueryBuilder.templates.ruleValueSelect = '\
 {{ var optgroup = null; }} \
-<select class="form-control" name="{{= it.name }}" {{? it.rule.filter.multiple }}multiple{{?}}> \
+<select class="tree-control" name="{{= it.name }}" {{? it.rule.filter.multiple }}multiple{{?}}> \
   {{? it.rule.filter.placeholder }} \
     <option value="{{= it.rule.filter.placeholder_value }}" disabled selected>{{= it.rule.filter.placeholder }}</option> \
   {{?}} \
@@ -3282,7 +3282,7 @@
                     break;
 
                 case 'textarea':
-                    h += '<textarea class="form-control" name="' + name + '"';
+                    h += '<textarea class="tree-control" name="' + name + '"';
                     if (filter.size) h += ' cols="' + filter.size + '"';
                     if (filter.rows) h += ' rows="' + filter.rows + '"';
                     if (validation.min !== undefined) h += ' minlength="' + validation.min + '"';
@@ -3292,7 +3292,7 @@
                     break;
 
                 case 'number':
-                    h += '<input class="form-control" type="number" name="' + name + '"';
+                    h += '<input class="tree-control" type="number" name="' + name + '"';
                     if (validation.step !== undefined) h += ' step="' + validation.step + '"';
                     if (validation.min !== undefined) h += ' min="' + validation.min + '"';
                     if (validation.max !== undefined) h += ' max="' + validation.max + '"';
@@ -3302,7 +3302,7 @@
                     break;
 
                 default:
-                    h += '<input class="form-control" type="text" name="' + name + '"';
+                    h += '<input class="tree-control" type="text" name="' + name + '"';
                     if (filter.placeholder) h += ' placeholder="' + filter.placeholder + '"';
                     if (filter.type === 'string' && validation.min !== undefined) h += ' minlength="' + validation.min + '"';
                     if (filter.type === 'string' && validation.max !== undefined) h += ' maxlength="' + validation.max + '"';
@@ -4288,11 +4288,11 @@
 
         // init selectpicker
         this.on('afterCreateRuleFilters', function(e, rule) {
-            rule.$el.find(Selectors.rule_filter).removeClass('form-control').selectpicker(options);
+            rule.$el.find(Selectors.rule_filter).removeClass('tree-control').selectpicker(options);
         });
 
         this.on('afterCreateRuleOperators', function(e, rule) {
-            rule.$el.find(Selectors.rule_operator).removeClass('form-control').selectpicker(options);
+            rule.$el.find(Selectors.rule_operator).removeClass('tree-control').selectpicker(options);
         });
 
         // update selectpicker on change
@@ -4546,11 +4546,11 @@
 
         // init selectpicker
         this.on('afterCreateRuleFilters', function(e, rule) {
-            rule.$el.find(Selectors.rule_filter).removeClass('form-control').chosen(options);
+            rule.$el.find(Selectors.rule_filter).removeClass('tree-control').chosen(options);
         });
 
         this.on('afterCreateRuleOperators', function(e, rule) {
-            rule.$el.find(Selectors.rule_operator).removeClass('form-control').chosen(options);
+            rule.$el.find(Selectors.rule_operator).removeClass('tree-control').chosen(options);
         });
 
         // update selectpicker on change

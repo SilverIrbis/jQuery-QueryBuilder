@@ -2861,6 +2861,10 @@
             $.extend(flags, rule.flags);
         }
 
+        if (!rule.is_active) {
+            $.extend(flags, {'is_active': rule.is_active});
+        }
+
         /**
          * Modifies the consolidated rule's flags
          * @event changer:parseRuleFlags
@@ -3049,7 +3053,7 @@
 
     QueryBuilder.templates.filterSelect = '\
 {{ var optgroup = null; }} \
-<input type="checkbox" checked="checked" class="rule-is_active" name="{{= it.rule.id }}_is_active"> \
+<input type="checkbox" {{? it.rule.flags.is_active === true }}checked="checked"{{?}} class="rule-is_active" name="{{= it.rule.id }}_is_active"> \
 <select class="tree-control" name="{{= it.rule.id }}_filter"> \
   {{? it.settings.display_empty_filter }} \
     <option value="-1">{{= it.settings.select_placeholder }}</option> \

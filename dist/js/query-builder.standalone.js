@@ -2106,7 +2106,7 @@
             }
 
             group.each(function(rule) {
-                if ((!rule.filter && options.skip_empty) || !rule.flags.is_active) {
+                if ((!rule.filter && options.skip_empty)) {
                     return;
                 }
 
@@ -2121,6 +2121,7 @@
                     type: rule.filter ? rule.filter.type : null,
                     input: rule.filter ? rule.filter.input : null,
                     operator: rule.operator ? rule.operator.type : null,
+                    is_active: rule.flags.is_active !== null ? rule.flags.is_active : true,
                     value: value
                 };
 
@@ -5950,6 +5951,10 @@
                 var parts = [];
 
                 group.rules.forEach(function(rule) {
+                    if (!rule.is_active) {
+                        return
+                    }
+
                     if (rule.rules && rule.rules.length > 0) {
                         parts.push('(' + nl + parse(rule) + nl + ')' + nl);
                     }

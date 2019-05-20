@@ -5951,7 +5951,7 @@
                 var parts = [];
 
                 group.rules.forEach(function(rule) {
-                    if (!rule.is_active) {
+                    if (!rule.is_active && rule.is_active !== undefined) {
                         return
                     }
 
